@@ -1,0 +1,34 @@
+/node_modules/
+/.expo/
+/dist/
+/.agents/
+/.codex/
+
+# Native build caches and generated binaries
+/android/.gradle/
+/android/.kotlin/
+/android/build/
+/android/app/build/
+/android/app/.cxx/
+/android/local.properties
+
+# Generated store and review artwork
+/appstore-screenshots/
+/appstore-screenshots-no-alpha/
+/playstore/
+/playstore-tablet-screenshots/
+/iap-promo-images/
+/iap-review-screenshots/
+
+# Local review/reference files
+/bu-projeyi-incele/
+/4.png
+/hata.jpeg
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+credentials.json
+*.jks
+*.keystore
+*.pem
