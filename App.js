@@ -520,7 +520,7 @@ const UPDATE_STATE_KEY = "puzzlearea.updateState.v1";
 const REVIEW_STATE_KEY = "puzzlearea.reviewState.v1";
 const RESET_PROGRESS_ON_LAUNCH = false;
 const APP_UPDATE_VERSION = SAVE_SCHEMA_VERSION;
-const CURRENT_APP_VERSION = "1.0.16";
+const CURRENT_APP_VERSION = "1.0.17";
 const REMOTE_UPDATE_CONFIG_URL = "";
 const STORE_URL = Platform.OS === "ios"
   ? "https://apps.apple.com/app/id6800594940"

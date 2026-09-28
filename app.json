@@ -2,7 +2,7 @@
   "expo": {
     "name": "Puzzle Area",
     "slug": "puzzle-area",
-    "version": "1.0.16",
+    "version": "1.0.17",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "icon": "./assets/app-icon.png",
@@ -18,7 +18,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.gorsengames.puzzlearea",
       "appStoreUrl": "https://apps.apple.com/app/id6800594940?action=write-review",
-      "buildNumber": "1.0.21",
+      "buildNumber": "1.0.22",
       "config": {
         "usesNonExemptEncryption": false
       },
@@ -29,7 +29,7 @@
     "android": {
       "package": "com.gorsengames.puzzlearea",
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.gorsengames.puzzlearea",
-      "versionCode": 120,
+      "versionCode": 121,
       "permissions": [],
       "blockedPermissions": [
         "android.permission.MODIFY_AUDIO_SETTINGS",
