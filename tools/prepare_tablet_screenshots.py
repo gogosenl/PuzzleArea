@@ -1,9 +1,11 @@
+import argparse
 from pathlib import Path
 from PIL import Image, ImageFilter
 
 
-SOURCE_DIR = Path(r"C:\Users\KARBORU\Desktop\puzzlearea")
-OUTPUT_DIR = Path(r"C:\Users\KARBORU\Documents\Codex\2026-07-13\playstore-tablet-screenshots")
+ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_SOURCE_DIR = ROOT / "appstore-screenshots-no-alpha"
+DEFAULT_OUTPUT_DIR = ROOT / "playstore-tablet-screenshots"
 
 TARGETS = {
     "7-inch": (1200, 1920),
@@ -43,10 +45,22 @@ def make_tablet_shot(source_path, target_size, output_path):
     canvas.convert("RGB").save(output_path, "PNG", optimize=True)
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Prepare portrait screenshots for Android tablets.")
+    parser.add_argument("--source-dir", type=Path, default=DEFAULT_SOURCE_DIR)
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    return parser.parse_args()
+
+
 def main():
-    sources = [SOURCE_DIR / f"{index}.png" for index in range(1, 4)]
+    args = parse_args()
+    sources = [args.source_dir / f"{index}.png" for index in range(1, 4)]
+    missing = [str(source) for source in sources if not source.exists()]
+    if missing:
+        raise FileNotFoundError(f"Missing source screenshots: {', '.join(missing)}")
+
     for label, size in TARGETS.items():
-        folder = OUTPUT_DIR / label
+        folder = args.output_dir / label
         folder.mkdir(parents=True, exist_ok=True)
         for index, source in enumerate(sources, start=1):
             make_tablet_shot(source, size, folder / f"puzzle-area-tablet-{label}-{index}.png")

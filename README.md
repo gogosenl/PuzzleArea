@@ -1,30 +1,84 @@
 # Puzzle Area
 
-Puzzle Area, Gorsen Oyun Yapim tarafindan gelistirilen mobil bir alan bulma bulmaca oyunudur. Oyuncu, tahta uzerindeki sayilari icine alacak sekilde o sayi kadar kare iceren dikdortgen alanlar cizer. Isaretlemeye sayidan baslamak zorunlu degildir; bos kareden de baslanabilir. Amac, tahtadaki tum kareleri dogru alanlarla kapatarak bolumu tamamlamaktir.
+![Puzzle Area gameplay](assets/website-gameplay-hero.png)
 
-Detayli oyun sistemi, ekonomi, katmanlar ve Play Store notlari icin bu dosya kullanilir. Play Store'a yuklenecek hazir metin ve formlar `playstore/` klasorundedir.
+Puzzle Area is a mobile logic game built with React Native and Expo. Players use the numbers on the board to identify rectangular regions with exactly the indicated number of cells. Completing every region solves the level and unlocks the next challenge.
 
-## Kisa Ozet
+The project is published as a portfolio case study for **Görkem Şenol / Görsen Games**. It demonstrates a production mobile game architecture, deterministic content generation, persistent progression, monetization integrations, and responsive layouts for phones and tablets.
 
-- 975 bolum
-- 3x3'ten 11x12'ye kadar katman sistemi
-- Ipucu parasi ve katman parasi ekonomisi
-- Animasyonlu tanitim akisi
-- Bolum tamamlama ve katman acma efektleri
-- Expo / React Native mobil oyun
+## Highlights
 
-## Calistirma
+- 1,290 deterministic puzzle levels across 10 layer groups
+- Boards ranging from the Starter collection to 15x11
+- Difficulty progression, special irregular board layouts, and duplicate prevention
+- Move-based one-to-three-star scoring and animated completion flow
+- Layer unlocking, hints, two in-game currencies, and save-data migrations
+- Apple App Store and Google Play in-app purchases
+- Interstitial and rewarded ads, plus a permanent remove-ads purchase
+- Turkish and English interfaces
+- Responsive iPhone, iPad, and Android phone/tablet layouts
+- Local progress persistence with AsyncStorage
 
-```powershell
-npm install
-npx.cmd expo start
+## Technology
+
+- React Native 0.81
+- Expo SDK 54
+- React 19
+- Expo IAP
+- Google Mobile Ads
+- AsyncStorage
+- Expo Haptics and Store Review
+
+## Project Structure
+
+```text
+.
+|-- App.js                    # Navigation, UI, progression, economy, ads and purchases
+|-- src/levels.js             # Deterministic puzzle generation and board definitions
+|-- assets/                   # Runtime artwork, icons, audio and store visuals
+|-- android/                  # Android native project generated for Expo modules
+|-- scripts/                  # Asset preparation utilities
+|-- tools/                    # Screenshot and promotional-media helpers
+|-- app.json                  # Expo, iOS and Android application configuration
+`-- eas.json                  # EAS development and production build profiles
 ```
 
-PowerShell `npx` hatasi verirse `npx.cmd` kullan.
+## Run Locally
 
-## Yayin Oncesi Kritik Notlar
+### Requirements
 
-- `RESET_PROGRESS_ON_LAUNCH` yayin oncesinde `false` kalmali.
-- Magaza urun kimlikleri App Store / Google Play urunleriyle birebir eslesmeli.
-- 2x odul butonu odullu reklam hazir degilse bedava odul vermemeli.
-- Privacy Policy web URL olarak yayinlanmali.
+- Node.js 20 LTS or another version supported by Expo SDK 54
+- Android Studio and an Android emulator for Android development
+- macOS with Xcode for local iOS builds, or an EAS account for cloud builds
+
+Install dependencies:
+
+```bash
+npm ci
+```
+
+Run the native Android development build:
+
+```bash
+npx expo run:android
+```
+
+Run on iOS from macOS:
+
+```bash
+npx expo run:ios
+```
+
+This app uses native advertising and purchase modules, so a native development build is required. Expo Go does not include those modules.
+
+## Store Services
+
+Purchases, ads, and production builds require developer-owned App Store Connect, Google Play Console, AdMob, and EAS configuration. Signing keys, store credentials, certificates, generated binaries, and local environment files are intentionally excluded from this repository.
+
+- [Download on the App Store](https://apps.apple.com/app/id6800594940)
+- [Get it on Google Play](https://play.google.com/store/apps/details?id=com.gorsengames.puzzlearea)
+- [Privacy policy](PRIVACY_POLICY.md)
+
+## Portfolio Scope
+
+The repository is public for source review and portfolio presentation. Game artwork, branding, level content, and source code remain the property of Görsen Games unless a separate license states otherwise. No permission is granted to publish copies of the game or reuse its commercial assets.

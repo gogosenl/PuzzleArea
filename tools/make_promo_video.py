@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+import argparse
 import math
-import os
 from pathlib import Path
 
 import imageio.v2 as imageio
@@ -13,8 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 DIST.mkdir(exist_ok=True)
 
-VIDEO_IN = Path(r"C:\Users\KARBORU\Desktop\kaçak gözetleme görsel\area2.mp4")
-SCREEN_IN = Path(r"C:\Users\KARBORU\Desktop\kaçak gözetleme görsel\area.jpeg")
+VIDEO_IN = ROOT / "media-source" / "gameplay.mp4"
 
 CONTACT_SHEET = DIST / "area2-contact-sheet.jpg"
 PROMO_VIDEO = DIST / "puzzle-area-promo-vertical.mp4"
@@ -537,7 +536,22 @@ def make_promo():
     writer.close()
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Create Puzzle Area promotional videos.")
+    parser.add_argument(
+        "--video",
+        type=Path,
+        default=VIDEO_IN,
+        help="Source gameplay recording (default: media-source/gameplay.mp4)",
+    )
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
+    args = parse_args()
+    VIDEO_IN = args.video.resolve()
+    if not VIDEO_IN.exists():
+        raise FileNotFoundError(f"Gameplay recording not found: {VIDEO_IN}")
     meta = make_contact_sheet()
     print("video_meta", meta)
     print("contact_sheet", CONTACT_SHEET)

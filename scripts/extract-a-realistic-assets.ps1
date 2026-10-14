@@ -1,3 +1,11 @@
+param(
+  [Parameter(Mandatory = $true)]
+  [string]$Source,
+
+  [Parameter(Mandatory = $true)]
+  [string]$HeaderSource
+)
+
 Add-Type -AssemblyName System.Drawing
 Add-Type -ReferencedAssemblies "System.Drawing" -TypeDefinition @"
 using System;
@@ -213,8 +221,8 @@ public static class AssetCleaner
 
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
-$source = "C:\Users\KARBORU\.codex\generated_images\019f5b52-22ac-7732-a23d-8fe088b3d102\call_08MqjqIFAF5qj6PZYzuUr8kj.png"
-$cleanHeaderSource = "C:\Users\KARBORU\.codex\generated_images\019f5b52-22ac-7732-a23d-8fe088b3d102\call_dmMQxsNkGDCO4HFtr7Mu1kbY.png"
+$source = (Resolve-Path -LiteralPath $Source).Path
+$cleanHeaderSource = (Resolve-Path -LiteralPath $HeaderSource).Path
 $outDir = Join-Path $root "assets\ui-a-realistic"
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 

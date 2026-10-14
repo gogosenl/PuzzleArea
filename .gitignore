@@ -3,6 +3,21 @@
 /dist/
 /.agents/
 /.codex/
+/coverage/
+/.idea/
+/.vscode/
+
+# Local environment and operating-system files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.log
+
+# Python caches
+__pycache__/
+*.py[cod]
 
 # Native build caches and generated binaries
 /android/.gradle/
@@ -20,6 +35,7 @@
 /iap-promo-images/
 /iap-review-screenshots/
 /_unused-assets-backup/
+/media-source/
 
 # Local review/reference files
 /bu-projeyi-incele/
@@ -33,3 +49,13 @@ credentials.json
 *.jks
 *.keystore
 *.pem
+*.p8
+*.p12
+*.cer
+*.key
+*.mobileprovision
+*.ipa
+*.apk
+*.aab
+google-services.json
+GoogleService-Info.plist
